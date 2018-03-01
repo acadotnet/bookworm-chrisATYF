@@ -21,6 +21,20 @@ class Book {
     get coverUrl() {
         return this._coverUrl;
     }
+
+    createBookData() {
+            var row = $('<tr>')
+            row.append('<td>' + this._id + '</td>');
+            row.append('<td>' + this._title + '</td>')
+            row.append('<td>' + this._author + '</td>')
+            row.append('<td>' + this._isbn + '</td>')
+            row.append('<td>' + this._coverUrl + '</td>')
+            return row;
+    }
+
+    setBookImg() {
+        
+    }
 }
 
 $(document).ready(function () {
@@ -34,17 +48,15 @@ $(document).ready(function () {
                 var theBook = new Book(book.id, book.title, book.author, book.isbn, book.coverUrl);
                 library.push(theBook);
             });
+
+            var body = $('#booksToShow')
             
-            // $.each(library, function (i, book) {
-
-            // }
-
-            // $.each(data.hobbies, function (i, hobby) {
-            //     $list.append('<li>' + hobby + '</li>')
-            // });
+            $.each(library, function (i, book) {
+                body.append(book.createBookData());
+            });
         },
         error: function (d) {
-
+            console.log('Uhh..');
         }
     });
 
