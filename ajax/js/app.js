@@ -1,3 +1,26 @@
+class Library{
+    constructor() {
+        this._books = [];
+    }
+
+    addBook(book) {
+        this._books.push(book);
+    }
+
+    build(target) {
+        var $tbody = $(target);
+
+        $.each(this._books, function (b, book) {
+            $tbody.append(book.createBookData());
+        });
+    }
+
+    setBookCount() {
+        var count = $('#bookCount').text('Found ' + this._books.length + ' book(s)');
+        return count;
+    }
+}
+
 class Book {
     constructor(id, title, author, isbn, coverUrl) {
         this._id = id;
@@ -23,17 +46,13 @@ class Book {
     }
 
     createBookData() {
-            var row = $('<tr>')
+            var row = $('<tr>');
             row.append('<td>' + this._id + '</td>');
-            row.append('<td>' + this._title + '</td>')
-            row.append('<td>' + this._author + '</td>')
-            row.append('<td>' + this._isbn + '</td>')
-            row.append('<td>' + this._coverUrl + '</td>')
+            row.append('<td><a href="./details.html">' + this._title + '</a></td>');
+            row.append('<td>' + this._author + '</td>');
+            row.append('<td>' + this._isbn + '</td>');
+            row.append('<td><img src="' + this._coverUrl + '" alt="' + this._title + '" height="100" width="100"/></td>');
             return row;
-    }
-
-    setBookImg() {
-        
     }
 }
 
@@ -43,17 +62,13 @@ $(document).ready(function () {
         url: "./data/books.json",
         success: function (d) {
 
-            var library = [];
+            var library = new Library();
             $.each(d.books, function (i, book) {
                 var theBook = new Book(book.id, book.title, book.author, book.isbn, book.coverUrl);
-                library.push(theBook);
+                library.addBook(theBook);
             });
-
-            var body = $('#booksToShow')
-            
-            $.each(library, function (i, book) {
-                body.append(book.createBookData());
-            });
+            library.build('#booksToShow');
+            library.setBookCount();
         },
         error: function (d) {
             console.log('Uhh..');
