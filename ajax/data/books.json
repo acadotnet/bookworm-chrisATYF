@@ -2,9 +2,8 @@
     "books": [{
         "id": 1,
         "title": "Secret Pizza Party",
-        "author": [
-            "Adam Rubin",
-            "Daniel Salmieri"
+        "authors": [
+            "Adam Rubin, Daniel Salmieri"
         ],
         "isbn": "0803739478",
         "coverUrl": "https://images.gr-assets.com/books/1362345778l/16685922.jpg"
@@ -12,21 +11,27 @@
     {
         "id": 2,
         "title": "Finding the Hidden Ball Trick: The Colorful History of Baseball's Oldest Ruse",
-        "author": "Bill Deane",
+        "authors": [
+            "Bill Deane"
+        ],
         "isbn": "144224433X",
         "coverUrl": "https://images.gr-assets.com/books/1417412736l/23466272.jpg"
     },
     {
         "id": 3,
         "title": "Shoe Dog: A Memoir by the Creator of NIKE",
-        "author": "Phil Knight",
+        "authors": [
+            "Phil Knight"
+        ],
         "isbn": "1501135910",
         "coverUrl": "https://images.gr-assets.com/books/1457284880l/27220736.jpg"
     },
     {
         "id": 4,
         "title": "Maphead: Charting the Wide, Weird World of Geography Wonks",
-        "author": "Ken Jennings",
+        "authors": [ 
+            "Ken Jennings"
+        ],
         "isbn": "1439167176",
         "coverUrl": "https://images.gr-assets.com/books/1327938058l/10502301.jpg"
     }],
